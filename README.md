@@ -11,6 +11,18 @@ This repository contains the official implementation for SA-INR introduced in th
 
 The project page with video is at https://yinboc.github.io/liif/.
 ## Usage
+## Quick Start
+
+1. We provide a pre-trained model `checkpoing/model.pth` for reducing slice-spacing of knee MRI.
+
+2. Use the following command for reducing slice-spacing of a single test case.
+
+```python
+python single_test.py --add_res --gpu [GPU] --save_dir [set a dir to save your images] --model_path [model_path] --nii_path [set the path to your test case] --slice_spacing [set your desired slice spacing] 
+```
+We also provide a knee MRI `test/knee.nii.gz` for testing.
+
+## Reproducing Experiments
 ### Data Preparation
 - Split your data into training set and test set. 
 
@@ -30,6 +42,6 @@ In default, the local-aware spatial attention (LASA) is applied to each query co
 
 ### Testing
 ```python
-python test.py --add_res --gpu [GPU] --save_dir [set a dir to save your images] --model_path [model_path]
+python test.py --add_res --gpu [GPU] --save_dir [set a dir to save your images] --model_path [model_path]  --slice_spacing [set your desired slice spacing]
 ```
 In the same way, one can use `--add_branch` for conditionally applying LASA.
