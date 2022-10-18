@@ -26,7 +26,7 @@ We also provide a knee MRI `test/knee.nii.gz` for testing.
 ### Data Preparation
 - Split your data into training set and test set. 
 
-- Write the path of cases in two sets to `[your_dataset_name].json` as in the following example.
+- Write the paths of data to `[your_dataset_name].json` as in the following example.
 
 ```
 {'train': [case1.nii.gz, case2.nii.gz...], 'test': [case3.nii.gz, case4.nii.gz...]}
