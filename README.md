@@ -1,15 +1,9 @@
 This repository contains the official implementation for SA-INR introduced in the following paper:
 
 # Spatial Attention-based Implicit Neural Representation for Arbitrary Reduction of MRI Slice Spacing
-**Authors:**   
-> Xin Wang[1], Sheng Wang[1], Honglin Xiong[2], Kai Xuan[1], Zixu Zhuang[1], Mengjun Liu[1], Zhenrong Shen[1], Xiangyu Zhao[1], Lichi Zhang[1], Qian Wang[2]
-> 
-**Institution:**
-> [1] School of Biomedical Engineering, Shanghai Jiao Tong University, Shanghai, China
-> 
-> [2] School of Biomedical Engineering, ShanghaiTech University, Shanghai, China
 
-The project page with video is at https://yinboc.github.io/liif/.
+
+The project page with video is at https://jamesqfreeman.github.io/SA-INR/.
 
 
 ### Environment
@@ -51,3 +45,11 @@ In default, the local-aware spatial attention (LASA) is applied to each query co
 python test.py --add_res --gpu [GPU] --save_dir [set a dir to save your images] --model_path [model_path]  --slice_spacing [set your desired slice spacing]
 ```
 In the same way, one can use `--add_branch` for conditionally applying LASA.
+
+**Authors:**   
+> Xin Wang[1], Sheng Wang[1], Honglin Xiong[2], Kai Xuan[1], Zixu Zhuang[1], Mengjun Liu[1], Zhenrong Shen[1], Xiangyu Zhao[1], Lichi Zhang[1], Qian Wang[2]
+> 
+**Institution:**
+> [1] School of Biomedical Engineering, Shanghai Jiao Tong University, Shanghai, China
+> 
+> [2] School of Biomedical Engineering, ShanghaiTech University, Shanghai, China
