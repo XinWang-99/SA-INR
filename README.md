@@ -13,10 +13,9 @@ The project page with video is at https://yinboc.github.io/liif/.
 
 
 ### Environment
-- Python 3
-- Pytorch 1.6.0
-- TensorboardX
-- yaml, numpy, tqdm, imageio
+- Python 3.9.2
+- Pytorch 1.10.0+cu113
+- nibabel, SimpleITK, pandas, scikit-image
 
 ### Quick Start
 
