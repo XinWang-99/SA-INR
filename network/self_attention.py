@@ -5,15 +5,19 @@ from torch.nn import functional as F
 
 class NonLocalBlockND(nn.Module):
 
-    def __init__(self,in_channels,inter_channels=None,dimension=3, bn_layer=True):
+    def __init__(self,
+                 in_channels,
+                 inter_channels=None,
+                 dimension=3,
+                 bn_layer=True):
         super(NonLocalBlockND, self).__init__()
-        
+
         assert dimension in [1, 2, 3]
-            
+
         self.dimension = dimension
 
         self.in_channels = in_channels
-        
+
         self.inter_channels = inter_channels
 
         if self.inter_channels is None:
@@ -23,10 +27,10 @@ class NonLocalBlockND(nn.Module):
                 self.inter_channels = 1
 
         if dimension == 3:
-            conv_nd = nn.Conv3d          
+            conv_nd = nn.Conv3d
             bn = nn.BatchNorm3d
         elif dimension == 2:
-            conv_nd = nn.Conv2d       
+            conv_nd = nn.Conv2d
             bn = nn.BatchNorm2d
         else:
             conv_nd = nn.Conv1d
@@ -67,17 +71,16 @@ class NonLocalBlockND(nn.Module):
                            stride=1,
                            padding=0)
 
-        
-
     def forward(self, x):
         '''
         :param x: (b, c,  h, w, d)
         :return:
         '''
-        
+
         batch_size = x.size(0)
 
-        g_x = self.g(x).view(batch_size, self.inter_channels, -1)#[bs, c, w*h]
+        g_x = self.g(x).view(batch_size, self.inter_channels,
+                             -1)  #[bs, c, w*h]
         g_x = g_x.permute(0, 2, 1)
 
         theta_x = self.theta(x).view(batch_size, self.inter_channels, -1)
@@ -85,7 +88,7 @@ class NonLocalBlockND(nn.Module):
         theta_x = theta_x.permute(0, 2, 1)
 
         phi_x = self.phi(x).view(batch_size, self.inter_channels, -1)
-        
+
         f = torch.matmul(theta_x, phi_x)
 
         #print(f.shape)
@@ -98,8 +101,9 @@ class NonLocalBlockND(nn.Module):
         W_y = self.W(y)
         z = W_y + x
         return z
-        
+
+
 if __name__ == '__main__':
-    x=torch.randn(1,64,64,64,17)
-    model=NonLocalBlockND(64)
+    x = torch.randn(1, 64, 64, 64, 17)
+    model = NonLocalBlockND(64)
     model(x)
