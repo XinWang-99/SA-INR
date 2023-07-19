@@ -13,4 +13,4 @@ epoch_save: 100
 
 batch_size: 1
 
-data: "clinical_knee.json"
+data: "data.json"
