@@ -13,7 +13,7 @@ class MakeDataset(Dataset):
 
     def __init__(self,
                  path_list,
-                 inp_size=(40, 40, 40),
+                 inp_size=(39,39,10),
                  scale_min=1,
                  scale_max=4,
                  sample_q=None,

@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from tqdm import tqdm
+import torch.multiprocessing as mp
 from torch.utils.data import DataLoader
 from torch.optim.lr_scheduler import MultiStepLR
 import json
@@ -231,4 +232,5 @@ if __name__ == '__main__':
         print('config loaded.')
     save_path = os.path.join(args.save_path,
                              '_' + args.config.split('/')[-1][:-len('.yaml')])
+    mp.set_start_method('spawn')
     main(config, save_path)
